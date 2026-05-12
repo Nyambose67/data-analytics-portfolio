@@ -67,7 +67,7 @@ Welcome to my data analytics portfolio. I'm transitioning from Software Developm
 ## Connect with me
 
 - **GitHub:** [github.com/Nyambose67](https://github.com/Nyambose67)
-- **LinkedIn:** [Add your LinkedIn link here]
+- **LinkedIn:** [https://www.linkedin.com/in/ntando-ntandazo-b81608334/]
 
 ---
 
