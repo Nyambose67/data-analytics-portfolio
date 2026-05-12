@@ -40,6 +40,44 @@ Welcome to my data analytics portfolio. I'm transitioning from Software Developm
 - Highest backlog (2.6% of requests still open)
 - Slowest resolution (81 days — 3x slower than Staten Island)
 
+### 4. Night Complaints (10 PM - 6 AM)
+
+**Key finding:** Manhattan has 40% of all night complaints — double any other borough.
+
+| Borough | Night Complaints | % of All Night |
+|---------|------------------|----------------|
+| MANHATTAN | 62 | 40% |
+| BRONX | 31 | 20% |
+| BROOKLYN | 31 | 20% |
+| QUEENS | 28 | 18% |
+| STATEN ISLAND | 4 | 3% |
+
+**Insight:** Night complaints (noise, nightlife issues) are concentrated in Manhattan. Other boroughs have far fewer late-night complaints, likely due to different land use (residential vs commercial/entertainment).
+
+### 5. Duplicate Service Requests
+
+**Finding:** 10+ duplicate requests exist in the 10,000-row sample.
+
+Examples:
+- Same `"Literature Request"` in Queens submitted multiple times on the same day
+- One `"DOF Property - Reduction Issue"` in Manhattan has 3 duplicate entries
+
+**Implication:** Metrics like "total requests" may be overcounted by 0.1-0.5%. For high-volume complaints (Literature Request at 29%), duplicates could skew analysis.
+
+**Recommendation:** Deduplicate by `complaint_type + borough + DATE(created_date)` before calculating volume metrics.
+
+### 6. Duplicate Detection
+
+After refining the logic (grouping by complaint_type, borough, date, descriptor, AND zip code), **only 3.2% of records are true duplicates.**
+
+- Total records with complete data: 7,473
+- Unique requests: 7,237
+- Duplicates: 236 (3.2%)
+
+**Takeaway:** The data is clean. The 43% duplicate rate from early analysis was a false alarm caused by over-aggressive grouping (ignoring descriptor and zip code).
+
+**Lesson learned:** Always validate your logic by sampling actual rows before concluding.
+
 ---
 
 ## SQL Queries in This Project
